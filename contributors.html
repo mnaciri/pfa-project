@@ -15,7 +15,7 @@
     <script src="./js/lib/popper-1.14.3.min.js"></script>
     <script src="./js/lib/bootstrap-4.1.1.min.js"></script>
     <script src="./js/lib/mustache-3.0.1.js"></script>
-    <script src="./index.js"></script>
+    <script src="./contributors.js"></script>
     <script id="articleTemplate" type="x-tmpl-mustache">
       <div class="row featurette">
         <div class="col-md">
@@ -23,8 +23,13 @@
           <p class="lead">{{Contenu}}</p>
         </div>
       </div>
+    </script>
+
+
+    <script id="separateArticleTemplate" type="x-tmpl-mustache">
       <hr class="featurette-divider">
     </script>
+
     <script id="EndArticleTemplate" type="x-tmpl-mustache">
       <hr>
       <footer class="container">
