@@ -1,14 +1,29 @@
-function addArticle() {
-	$("#articles").empty();
+function addArticle(titre, sstitre, contenu) {
 	let articleTemplate = $('#articleTemplate').html();
 	Mustache.parse(articleTemplate);
 	let articleRendered=Mustache.render(articleTemplate, {
-		Titre:"Introduction:",
-		Sstitre:"Notre Projet",
-		Contenu:"Le but de notre projet est de faire communiquer en WIFI plusieurs véhicules autonomes afin de les faire circuler en convois. Pour cela, nous souhaitons utiliser le protocole 802.11p qui est adapté à la communication entre véhicules."
+		Titre:titre,
+		Sstitre:sstitre,
+		Contenu:contenu
 	});
 	$("#articles").append(articleRendered);
+}
 
+function addArticlePicture1(titre, sstitre, contenu1, img, titreImage, contenu2) {
+	let articleTemplate = $('#articleTemplatePicture1').html();
+	Mustache.parse(articleTemplate);
+	let articleRendered=Mustache.render(articleTemplate, {
+		Titre:titre,
+		Sstitre:sstitre,
+		Contenu1:contenu1,
+		image:img,
+		TitreImage:titreImage,
+		Contenu2:contenu2
+	});
+	$("#articles").append(articleRendered);
+}
+
+function endArticle() {
 	let endTemplate = $('#EndArticleTemplate').html();
 	Mustache.parse(endTemplate);
 	let endRendered=Mustache.render(endTemplate, {});
@@ -17,5 +32,18 @@ function addArticle() {
 
 //main
 $(document).ready(function() {
-	addArticle();
+	$("#articles").empty();
+	let Titres=["Raspberry"];
+	let Sstitres=["Comment la connecter à un réseau wifi."];
+	let Contenus1=["Pour connecter la Raspberry à un réseau wifi, il faut créer un fichier wpa_supplicant.conf à la racine de la partition boot. Ce fichier doit contenir ceci:"];
+	let Images=["./img/wpa_sup.png"];//Mettre "NONE" si pas d'image pour le template
+	let TitresImages=["wpa_supplicant.conf"];//Mettre "NONE" si pas d'image pour le template
+	let Contenus2=["Pour se connecter ultérieurement en ssh à la Raspberry, il suffit de créer un fichier vide appelé 'ssh', également à la racine de la partition boot."];
+	for(let i=0; i<Titres.length; i++) {
+		if (Images[i]=="NONE")
+			addArticle(Titres[i], Sstitres[i], Contenus1[i]);
+		else
+			addArticlePicture1(Titres[i], Sstitres[i], Contenus1[i], Images[i], TitresImages[i], Contenus2[i]);
+	}
+	endArticle();
 });

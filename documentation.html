@@ -15,6 +15,16 @@
     <script src="./js/lib/bootstrap-4.1.1.min.js"></script>
     <script src="./js/lib/mustache-3.0.1.js"></script>
     <script src="./js/documentation.js"></script>
+    <script id="articleTemplatePicture1" type="x-tmpl-mustache">
+      <div class="row featurette">
+        <div class="col-md">
+          <h2 class="featurette-heading">{{Titre}} <span class="text-muted">{{Sstitre}}</span></h2>
+          <p class="lead">{{Contenu1}}</p>
+          <img src="{{image}}" alt="photo {{TitreImage}}" style="width: 60%; heigth: 60%;" />
+          <p class="lead">{{Contenu2}}</p>
+        </div>
+      </div>
+    </script>
     <script id="articleTemplate" type="x-tmpl-mustache">
       <div class="row featurette">
         <div class="col-md">
